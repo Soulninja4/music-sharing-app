@@ -102,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ALLOWED_HOSTS = ['*.vercel.app']  # Allow *.vercel.app
+ALLOWED_HOSTS = ['.vercel.app']  # Allow *.vercel.app
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
