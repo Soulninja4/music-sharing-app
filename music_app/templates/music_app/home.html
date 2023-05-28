@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Welcome, {{ user.username }}!</h1>
+
+<h2>Your Music Files:</h2>
+<ul>
+  {% for file in user_files %}
+  <li>{{ file.file.name }}</li>
+  <!-- <audio controls>
+    <source
+      src="{{ file.file.url }}"
+      type="audio/mpeg"
+    >
+  Your browser does not support the audio element.
+  </audio> -->
+  {% empty %}
+  <li>No music files uploaded.</li>
+  {% endfor %}
+</ul>
+
+<h2>Public Music Files:</h2>
+<ul>
+  {% for file in public_files %}
+  <li>{{ file.file.name }} (Uploaded by: {{ file.user.username }})</li>
+  <!-- <audio controls>
+    <source
+      src="{{ file.file.url }}"
+      type="audio/mpeg"
+    >
+  </audio> -->
+  {% empty %}
+  <li>No public music files available.</li>
+  {% endfor %}
+</ul>
+
+<h2>Protected Music Files:</h2>
+<ul>
+  {% for file in protected_files %}
+  <li>
+    {{ file.file.name }}
+    (Uploaded by: {{ file.user.username }})
+  </li>
+  <!-- <audio controls>
+    <source
+      src="{{ file.file.url }}"
+      type="audio/mpeg"
+    >
+  Your browser does not support the audio element.
+  </audio> -->
+  {% empty %}
+  <li>No protected music files available.</li>
+  {% endfor %}
+</ul>
+{% else %}
+<h2>Please log in to access the content.</h2>
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
+{% endblock %}
