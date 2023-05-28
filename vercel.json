@@ -8,7 +8,7 @@
   "routes": [
     {
       "src": "music_files/(.*)",
-      "dest": "django_app_name/wsgi.py"
+      "dest": "music_files/wsgi.py"
     }
   ]
 }
