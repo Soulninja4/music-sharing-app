@@ -2,12 +2,16 @@
   "builds": [
     {
       "src": "music_files/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
     }
   ],
   "routes": [
     {
-      "src": "music_files/(.*)",
+      "src": "/(.*)",
       "dest": "music_files/wsgi.py"
     }
   ]
